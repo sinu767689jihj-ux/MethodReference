@@ -1,0 +1,22 @@
+import java.util.function.Predicate;
+ class NumberUtil {
+
+    public static boolean isEven(Integer n) {
+        return n % 2 == 0;
+    }
+}
+
+public class MethodReferenceUsingPredicate {
+
+    public static void main(String[] args) {
+
+        Predicate<String> p1 = s -> s.contains("magam");
+        System.out.println("Predicate result:Lambda Expression:" + p1.test("Srinumagam"));
+
+        Predicate<Integer> p2 = n -> n > 10;
+        System.out.println("Predicate result:Lambda Expression:" + p2.test(15));
+
+        Predicate<Integer> p3 = NumberUtil::isEven;
+        System.out.println("Predicate result:Method Reference:" + p3.test(15));
+    }
+}
