@@ -1,0 +1,27 @@
+import java.util.function.Function;
+public class MethodReferenceDemo {
+    public static void main(String[] args)
+    {
+        //Function<String,Integer> f=s->s.length();
+        Function<String,Integer> f=String::length;//Method Reference
+        int length=f.apply("Srinumagam");
+        System.out.println("Length of the String:Method Reference:"+length);
+        //Function<String,Integer> f2=String::charAt;//complie error
+        //char charAt(int index) return type is matching,but input type is not matching 
+        //System.out.println("Character at index 0:"+f2.apply("Srinumagam"));
+        Function<String,Boolean> f3=s->s.contains("magam"); //subString
+        System.out.println("Boolean value of contains method:Lambda Expression:"+f3.apply("Srinumagam"));//main string
+        //Function<String,Boolean> f3=String::contains;Complie time error
+        //boolean contains(CharSequence s):return type is match,but input type is mismatch
+        //Function<String,Boolean> f4=String::matches;//two input values involve,we get error
+        Function<String,Boolean> f4=s->s.matches("Srinu");//Lambda Expression
+        System.out.println("Boolean value of matches method:Lambda Expression:"+f4.apply("Srinumagam"));
+        /*Difference b/w contains method and matches method
+        contains: checks if a string contains a substring
+        matches: checks if a string matches a regular expression*/
+        Function<String,String> f5=s->s.toUpperCase();//Lambda Expression
+        System.out.println("Uppercase of the String:"+f5.apply("Srinumagam"));
+        Function<String,String> f6=String::toUpperCase;//Method Reference
+        System.out.println("Uppercase of the String:Method Reference:"+f6.apply("Raja"));
+    }
+}
